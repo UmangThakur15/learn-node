@@ -8,4 +8,5 @@ function foo() {
     ).then(res => console.log(res));
   });
 }
+
 foo();
