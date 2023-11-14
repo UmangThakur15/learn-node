@@ -69,7 +69,12 @@ When *setTimeout(callback, ms)* invoked, Node puts a *callback* in the timer pha
 
 1. In "eventloop/timer.js", what will be the order of execution?
 
+Ans. In the "timer.js" script, two calls to the `foo` function are made with arguments `2` and `1`. Within `foo`, "foo" is first logged, followed by the scheduling of two `setTimeout` callbacks with functions to print "2 : bar" and "1 : bar" after a timeout of 0 milliseconds. Despite the apparent immediacy of the timeouts, the event loop ensures that these callbacks are placed in the event queue rather than executed immediately. As a result, after "foo" is logged for both calls, "baz" is printed twice, indicating the synchronous execution of `baz` within each `foo`. Subsequently, the event loop fetches the scheduled callbacks from the event queue and logs "2 : bar" and "1 : bar" in the order they were scheduled, revealing the asynchronous nature of the `setTimeout` function and the event-driven execution flow in JavaScript.
+
+
 2. How many callbacks will the timers phase queue have after the script is run? 
+
+Ans. In the "timer.js" script, there will be two callbacks in the timers phase queue after the script is run. This is because two `setTimeout` functions are used, each scheduling a callback function to be executed after a timeout of 0 milliseconds. Despite the timeout being set to 0, the callbacks are still processed asynchronously in the timers phase of the event loop, allowing the script to continue execution before the callbacks are invoked. Therefore, when the event loop reaches the timers phase, it will have two callbacks to dequeue and execute, corresponding to the two scheduled `setTimeout` callbacks in the script.
 
 All I/O operations (e.g., read a file) run in the poll phase. The poll phase performs an I/O operation and puts all callbacks associated with the I/O operation in its queue. When the I/O operation completes, it executes the callbacks in the queue. 
 
