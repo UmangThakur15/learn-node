@@ -49,6 +49,9 @@ The NodeJS standard library has several operations that are called blocking oper
 
 1. Explore the code in "operations/blocking.js" and "operations/nonblocking.js". For which code will the function moreWork() get executed. Why?
 
+In "blocking.js", moreWork() gets executed after the file is read synchronously.
+In "nonblocking.js", moreWork() gets executed before the file reading operation completes asynchronously.
+
 One must be careful when writing concurrent scripts in Node.js. If actions performed in later stages are related to actions related in previous stages or vice-versa then the program will be in an error state. 
 For example, consider the code in "operations/syncdelete.js".
 
