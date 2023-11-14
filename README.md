@@ -34,8 +34,12 @@ Answer the following questions based on "basics/foo.js":
 1. Run foo.js with the following command line argument and record the output.
 
     `$ node foo.js hello 'I am' "an argument"`
+    Output: hello
+            I am
+            an argument
 
 2. Modify "basics/foo.js" such that all arguments except the Node path and the script path are logged.
+    Modified the code in "basics/foo.js" to start logging arguments from index 2, as indices 0 and 1 are reserved for the Node path and the script path
 
 # Block and Non Blocking Operations
 
