@@ -59,6 +59,8 @@ For example, consider the code in "operations/syncdelete.js".
 
 1. Identify and fix the runtime error in "operations/syncdelete.js".
 
+Ans.  The issue with the code in "syncdelete.js" is that it attempts to delete the file using fs.unlinkSync immediately after initiating the asynchronous file reading operation with fs.readFile. This can lead to a race condition where the file is being read while it's also being deleted.
+
 # Event Loop
 
 When *setTimeout(callback, ms)* invoked, Node puts a *callback* in the timer phase's queue. The Node runtime executes it after a threshold time as specified in the *ms* argument.
